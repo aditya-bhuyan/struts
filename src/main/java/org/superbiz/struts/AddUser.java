@@ -27,6 +27,11 @@ import java.util.Properties;
 
 @Component
 public class AddUser {
+    private final UserService service;
+
+    public AddUser(UserService service) {
+        this.service = service;
+    }
 
     private int id;
     private String firstName;
@@ -34,16 +39,8 @@ public class AddUser {
     private String errorMessage;
 
 
-    private  UserService userService;
 
 
-
-    public AddUser(UserService userService){
-        this.userService = userService;
-    }
-    public AddUser(){
-
-    }
     public String getFirstName() {
         return firstName;
     }
@@ -81,8 +78,10 @@ public class AddUser {
 
         try {
 
-            userService.add(new User(id, firstName, lastName));
+            service.add(new User(id, firstName, lastName));
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
             this.errorMessage = e.getMessage();
             return "failure";
         }

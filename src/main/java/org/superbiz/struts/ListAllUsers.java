@@ -17,6 +17,7 @@
  */
 package org.superbiz.struts;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.naming.Context;
@@ -27,17 +28,16 @@ import java.util.Properties;
 @Component
 public class ListAllUsers {
 
+    private final UserService service;
+
+    public ListAllUsers(UserService service) {
+        this.service = service;
+    }
     private int id;
     private String errorMessage;
     private List<User> users;
-    private UserService service;
-    public ListAllUsers(UserService userService){
-        service=userService;
-    }
 
-    public ListAllUsers(){
 
-    }
     public List<User> getUsers() {
         return users;
     }
@@ -65,9 +65,11 @@ public class ListAllUsers {
     public String execute() {
 
         try {
-
+            System.out.println("The Service is "+service);
             this.users = service.findAll();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
             this.errorMessage = e.getMessage();
             return "failure";
         }

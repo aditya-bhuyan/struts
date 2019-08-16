@@ -4,6 +4,6 @@ spring:
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
 
   datasource:
-    url: jdbc:mysql://localhost:3306/struts?useSSL=false
+    url: jdbc:mysql://localhost:3306/struts?useSSL=false&allowPublicKeyRetrieval=true&user=root&password=aditya
     user: root
     password : aditya

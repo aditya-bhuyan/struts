@@ -27,17 +27,16 @@ import java.util.Properties;
 @Component
 public class FindUser {
 
+    private final UserService service;
+
+    public FindUser(UserService service) {
+        this.service = service;
+    }
     private long id;
     private String errorMessage;
     private User user;
 
-    private  UserService service;
-    public FindUser(){
 
-    }
-    public FindUser(UserService userService){
-        service = userService;
-    }
     public User getUser() {
         return user;
     }
@@ -67,6 +66,8 @@ public class FindUser {
         try {
             this.user = service.find(id);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
             this.errorMessage = e.getMessage();
             return "failure";
         }

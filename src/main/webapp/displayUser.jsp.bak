@@ -20,7 +20,7 @@ limitations under the License.
 <table>
     <tr>
         <td><b>ID</b></td>
-        <td><s:property value="user.id"/></td>
+        <td><s:property value="user.id"></td>
     </tr>
     <tr>
         <td><b>First Name</b></td>
