@@ -16,17 +16,18 @@ limitations under the License.
 -->
 <title>All Users</title>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <table>
     <tr>
         <th>ID</th>
         <th>First Name</th>
         <th>Last Name</th>
     </tr>
-    <c:forEach items="${users}" var="u">
+    <s:iterator value="users" >
         <tr>
-            <td>${u.id }</td>
-            <td>${u.firstName }</td>
-            <td>${u.lastName }</td>
+            <td><s:property value="u.id"/></td>
+            <td><s:property value="u.firstName"/></td>
+            <td><s:property value="u.lastName"/></td>
         </tr>
     </c:forEach>
 </table>
