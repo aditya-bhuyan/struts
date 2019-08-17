@@ -7,3 +7,18 @@ spring:
     url: jdbc:mysql://localhost:3306/struts?useSSL=false&allowPublicKeyRetrieval=true&user=root&password=aditya
     user: root
     password : aditya
+
+  security:
+    user:
+      name: aditya
+      password : aditya
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /data
+  endpoint:
+    health:
+      show-details : always
